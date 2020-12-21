@@ -1,0 +1,211 @@
+@font-face {
+	font-family: 'PokerFont';
+	src: url('./fonts/CardCharactersNarrowFigures.ttf') format('truetype');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.disable {
+	cursor: not-allowed !important;
+	pointer-events: none !important;
+}
+
+.hide {
+	display: none !important;
+}
+
+body {
+	font-family: 'PokerFont';
+	background: rgb(173, 216, 230);
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.cards {
+	position: relative;
+	width: 960px;
+	height: 308px;
+	margin: 20px 0 40px 0;
+}
+
+.card {
+	background: transparent;
+	position: absolute;
+	width: 220px;
+	height: 308px;
+	border-radius: 10px;
+	margin: 0 10px 0 10px;
+	transition: left 0.4s ease;
+	cursor: pointer;
+}
+
+.card.slide-cards {
+	animation: slide 0.7s ease-in !important;
+}
+
+@keyframes slide {
+	0% {
+		top: -500px;
+	}
+
+	80% {
+		top: 40px;
+	}
+
+	100% {
+		top: 0;
+	}
+}
+
+.card .content {
+	background: transparent;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	transform-style: preserve-3d;
+	transform: perspective(800px) rotateY(0deg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.content.content-transition {
+	transition: transform 1.2s ease;
+}
+.content.rotate-card {
+	transform: perspective(800px) rotateY(180deg);
+}
+
+.content .front {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url('./images/card.jpg');
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.content .back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 10px;
+	font-size: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: rotateY(180deg);
+}
+
+.content .back img {
+	display: block;
+}
+
+.ace h1 {
+	font-size: 30px;
+	text-align: center;
+}
+
+.ace img {
+	display: block;
+	text-align: center;
+	width: 25px;
+	height: 25px;
+}
+
+.content .back .top-left-ace {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+.content .back .bottom-right-ace {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	transform: rotateX(180deg);
+}
+
+.btn {
+	background: transparent;
+	color: #fff;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 5px;
+}
+
+#action-btn {
+	opacity: 0;
+	cursor: pointer;
+}
+
+#action-btn.btn-transition {
+	transition: opacity 0.4s ease;
+}
+
+#action-btn.show-btn {
+	opacity: 1 !important;
+}
+
+#selected-text {
+	font-size: 30px;
+	font-weight: 600;
+	color: #000;
+	text-transform: uppercase;
+	margin-top: 50px;
+}
+
+#selected-card-icon {
+	width: 40px;
+	height: 40px;
+	margin-left: 5px;
+}
+
+#reset-btn {
+	position: relative;
+	padding: 10px 20px;
+	margin-top: 30px;
+	border: 1px solid #fff;
+	cursor: pointer;
+	transition: transform 0.05s ease-in-out;
+}
+
+#reset-btn:active {
+	transform: translateY(2px);
+}
+
+/* attribution styles */
+
+#icons-attribution {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #333;
+	font-size: 12px;
+	position: fixed;
+	right: 10px;
+	bottom: 10px;
+}
